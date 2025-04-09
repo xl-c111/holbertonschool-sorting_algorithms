@@ -8,12 +8,12 @@
  * Description: - start from the second element, compare the current element with elements in the sorted part,
  *                if the current element is smaller, move the larger element one position back
  *              - swap current with prev by re-linking their prev and next pointers:
- *                1, prev->prev->next → current
- *                2, current->prev → prev->pre
- *                3, prev->prev → current
- *                4, prev->next → current->next
- *                5, current->next → prev
- *                6, current->next->prev → prev
+ *                1, prev->prev->next = current
+ *                2, current->prev = prev->pre
+ *                3, prev->prev = current
+ *                4, prev->next = current->next
+ *                5, current->next = prev
+ *                6, current->next->prev = prev
  *
  */
 void insertion_sort_list(listint_t **list)
