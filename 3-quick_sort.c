@@ -22,17 +22,23 @@ int lomuto_partition(int *array, int start, int end, size_t size)
 	{
 		if (array[i] < pivot)
 		{
-			temp = array[partition_index];
-			array[partition_index] = array[i];
-			array[i] = temp;
+			if (partition_index != i)
+			{
+				temp = array[partition_index];
+				array[partition_index] = array[i];
+				array[i] = temp;
+				print_array(array, size);
+			}
 			partition_index++;
 		}
 	}
-	temp = array[partition_index];
-	array[partition_index] = array[end];
-	array[end] = temp;
-
-	print_array(array, size);
+	if (partition_index != end)
+	{
+		temp = array[partition_index];
+		array[partition_index] = array[end];
+		array[end] = temp;
+		print_array(array, size);
+	}
 	return (partition_index);
 }
 /**
