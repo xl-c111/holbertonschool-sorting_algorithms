@@ -3,15 +3,16 @@
 #include "sort.h"
 
 /**
- * lomuto_partition - partition the array using lomuto scheme 
+ * lomuto_partition - partition the array using lomuto scheme
  * @array: a pointer to the  given array
  * @start: start index of sub-array
  * @end: end index of the sub-array(pivot is array[end])
+ * @size: number of elements in the array
  * Return: final index of the pivot
  *
  */
 
-int lomuto_partition(int *array, int start, int end)
+int lomuto_partition(int *array, int start, int end, size_t size)
 {
 	int pivot = array[end];
 	int partition_index = start;
@@ -25,13 +26,14 @@ int lomuto_partition(int *array, int start, int end)
 			array[partition_index] = array[i];
 			array[i] = temp;
 			partition_index++;
-		}	
+		}
 	}
 	temp = array[partition_index];
 	array[partition_index] = array[end];
 	array[end] = temp;
 
-	return partition_index;
+	print_array(array, size);
+	return (partition_index);
 }
 /**
  * quicksort_recursive - recursively applies quicksort to sub-arrays
@@ -46,8 +48,7 @@ void quicksort_recursive(int *array, int start, int end, size_t size)
 
 	if (start < end)
 	{
-		partition_index = lomuto_partition(array, start, end);
-		print_array(array, size);
+		partition_index = lomuto_partition(array, start, end, size);
 		quicksort_recursive(array, start, partition_index - 1, size);
 		quicksort_recursive(array, partition_index + 1, end, size);
 	}
@@ -56,7 +57,7 @@ void quicksort_recursive(int *array, int start, int end, size_t size)
 /**
  * quick_sort - sorts an array of integers in ascending order using the
  *              Quick sort algorithm
- * @array: a pointer to the given array 
+ * @array: a pointer to the given array
  * @size: number of elements in the given array
  *
  */
@@ -65,5 +66,5 @@ void quick_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	quicksort_recursive(array, 0, size-1, size);
+	quicksort_recursive(array, 0, size - 1, size);
 }
