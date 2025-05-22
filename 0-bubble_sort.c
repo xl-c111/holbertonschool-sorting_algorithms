@@ -20,7 +20,7 @@ void bubble_sort(int *array, size_t size)
 	{
 		flag = 0;                               /* set flag to 0, means no swap occurs yet */
 
-		for (j = 0; j < size - 1 - i; j++)      /*inner loop ton handle the unsorted part by comparing and swapping elements */
+		for (j = 0; j < size - 1 - i; j++)      /* inner loop to handle the unsorted part by comparing and swapping elements */
 		{
 			if (array[j] > array[j + 1])
 			{
